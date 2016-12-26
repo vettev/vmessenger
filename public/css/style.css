@@ -1,0 +1,48 @@
+.search-results, .contacts
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.conversation
+{
+	position: relative;
+}
+.conversation .panel-body
+{
+	padding: 0;
+}
+.conversation .exit
+{
+	position: absolute;
+	right: 1%;
+	top: 1%;
+	cursor: pointer;
+}
+.contact
+{
+	display: block;
+	padding: 1em;
+}
+.messages
+{
+	overflow-y: scroll;
+	max-height: 300px;
+}
+.message
+{
+	padding: 0.5em 1em;
+}
+.message .created-by
+{
+	color: rgb(20, 150, 255);
+}
+.message .created-at
+{
+	float: right;
+	font-size: 0.9em;
+}
+.own-message
+{
+	background: rgba(black, 0.1);
+}
