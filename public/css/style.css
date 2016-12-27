@@ -1,48 +1,63 @@
-.search-results, .contacts
-{
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.conversation
-{
-	position: relative;
-}
-.conversation .panel-body
-{
-	padding: 0;
-}
-.conversation .exit
-{
-	position: absolute;
-	right: 1%;
-	top: 1%;
-	cursor: pointer;
-}
-.contact
-{
-	display: block;
-	padding: 1em;
-}
-.messages
-{
-	overflow-y: scroll;
-	max-height: 300px;
-}
-.message
-{
-	padding: 0.5em 1em;
-}
-.message .created-by
-{
-	color: rgb(20, 150, 255);
-}
-.message .created-at
-{
-	float: right;
-	font-size: 0.9em;
-}
-.own-message
-{
-	background: rgba(black, 0.1);
-}
+a {
+  transition: 0.3s all; }
+  a:hover, a:focus, a:active {
+    text-decoration: none; }
+
+button {
+  transition: 0.3s all; }
+
+.search-results, .contacts {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+.conversation {
+  position: relative; }
+  .conversation .panel-heading {
+    cursor: pointer; }
+  .conversation .panel-body {
+    padding: 0; }
+  .conversation .exit {
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: red;
+    font-size: 1.2em; }
+    .conversation .exit:hover {
+      color: #cc0000; }
+
+#contacts .panel-body {
+  padding: 0; }
+
+.contacts .contact {
+  display: block;
+  padding: 1em;
+  background: rgba(20, 150, 255, 0.1);
+  border-bottom: rgba(20, 150, 255, 0.2) 1px solid; }
+  .contacts .contact:hover {
+    background: rgba(20, 150, 255, 0.2); }
+.contacts > li:last-of-type > .contact {
+  border: none; }
+
+.messages {
+  overflow-y: scroll;
+  max-height: 300px; }
+  .messages .message {
+    padding: 0.5em 1em; }
+    .messages .message .created-by {
+      color: #1496ff; }
+    .messages .message .created-at {
+      float: right;
+      font-size: 0.9em; }
+    .messages .message .content {
+      padding: 0;
+      margin: 0; }
+
+.own-message {
+  background: rgba(20, 150, 255, 0.15); }
+
+/*# sourceMappingURL=style.css.map */

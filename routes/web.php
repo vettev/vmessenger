@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/pusher/auth', [
 	'uses' => 'HomeController@pusherAuth',
@@ -45,5 +45,11 @@ Route::get('/conversation/{id}', [
 Route::get('message/new/{id}', [
 	'uses' => 'UserController@newMessage',
 	'as' => 'message.new',
+	'middleware' => 'auth'
+	]);
+
+Route::get('/contacts', [
+	'uses' => 'UserController@showContacts',
+	'as' => 'contacts.show',
 	'middleware' => 'auth'
 	]);

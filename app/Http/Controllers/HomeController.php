@@ -65,9 +65,9 @@ class HomeController extends Controller
             'recipient_id' => Auth::user()->id,
             'sender_id' => $id,
             ])
-        ->orderBy('created_at', 'asc')
+        ->orderBy('created_at', 'desc')
         ->limit(50)
-        ->get();
+        ->get()->reverse();
 
         return view('layouts.msg-window', ['user' => $user, 'messages' => $messages]);
     }

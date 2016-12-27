@@ -37,10 +37,10 @@ $(document).ready(function()
 	$('body').on('click', '.ajax-link', function(e) {
 		e.preventDefault();
 		var href = $(this).attr('href');
-		var id = $(this).data('id');
-		var conversationElement = "#conversation-" + id;
 		if($(this).hasClass('contact'))
 		{
+			var id = $(this).data('id');
+			var conversationElement = "#conversation-" + id;
 			if($(conversationElement).length == 0)
 			{
 				$.ajax({
@@ -54,8 +54,24 @@ $(document).ready(function()
 			}
 			else
 			{
+				$(conversationElement).find('.panel-body').show();
 				$(conversationElement).find('.message-content').focus();
 			}
+		}
+		if($(this).hasClass('add-contact'))
+		{
+			$.ajax({
+				url: href,
+				success: function() {
+					$.ajax({
+						url: '/contacts',
+						success: function(data) {
+							$('#contacts .panel-body').html(data);
+						}
+					})
+					$('#uni-modal').modal('hide');
+				},
+			});
 		}
 	});
 
@@ -64,7 +80,6 @@ $(document).ready(function()
 		var url = $(this).attr('action');
 		var form = $(this);
 		var input = form.find('.message-content');
-		console.log($(input).val());
 		if($(input).val())
 		{
 			$.ajax({

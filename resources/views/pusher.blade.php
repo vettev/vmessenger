@@ -37,5 +37,7 @@
 			messagesElement.append(newMessage);
 			messagesElement.animate({scrollTop: messagesElement[0].scrollHeight});
 		}
+		var sound = new Audio('{{ asset('sounds/msg.mp3') }}');
+		sound.play();
 	});
 </script>

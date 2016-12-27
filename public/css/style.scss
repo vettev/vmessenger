@@ -1,0 +1,106 @@
+$main-color: rgb(20, 150, 255);
+
+a
+{
+	transition: 0.3s all;
+
+	&:hover, &:focus, &:active
+	{
+		text-decoration: none;
+	}
+}
+button
+{
+	transition: 0.3s all;
+}
+.search-results, .contacts
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.conversation
+{
+	position: relative;
+
+	.panel-heading
+	{
+		cursor: pointer;
+	}
+	.panel-body
+	{
+		padding: 0;
+	}
+	.exit
+	{
+		position: absolute;
+		right: 1%;
+		top: 1%;
+		cursor: pointer;
+		background: none;
+		border: none;
+		font-weight: bold;
+		color: red;
+		font-size: 1.2em;
+
+		&:hover
+		{
+			color: darken(red, 10%);
+		}
+	}
+}
+#contacts
+{
+	.panel-body
+	{
+		padding: 0;
+	}
+}
+.contacts
+{
+	.contact
+	{
+		display: block;
+		padding: 1em;
+		background: rgba($main-color, 0.1);
+		border-bottom: rgba($main-color, 0.2) 1px solid;
+
+		&:hover
+		{
+			background: rgba($main-color, 0.2);
+		}
+	}
+	& > li:last-of-type > .contact
+	{
+		border: none;
+	}
+}
+.messages
+{
+	overflow-y: scroll;
+	max-height: 300px;
+
+	.message
+	{
+		padding: 0.5em 1em;
+
+		.created-by
+		{
+			color: rgb(20, 150, 255);
+		}
+		.created-at
+		{
+			float: right;
+			font-size: 0.9em;
+		}
+		.content
+		{
+			padding: 0;
+			margin: 0;
+		}
+	}
+}
+.own-message
+{
+	background: rgba($main-color, 0.15);
+}

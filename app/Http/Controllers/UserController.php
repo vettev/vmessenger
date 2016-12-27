@@ -25,9 +25,9 @@ class UserController extends Controller
 		return view('user.contacts', ['contacts' => $contacts]);
 	}
 
-    public function addContact($id)
+    public function addContact($id, Request $request)
     {
-    	if($id === Auth::user()->id)
+    	if($id === Auth::user()->id || count(Auth::user()->contacts->where('contact_id', $id)) > 0)
     		return null;
 
     	$contact = new Contact();
@@ -35,13 +35,12 @@ class UserController extends Controller
     	$contact->contact_id = $id;
     	$contact->save();
 
-    	return redirect()->back();
+    	return "ok";
     }
 
     public function newMessage($id, Request $request)
     {
     	$sender = Auth::user();
-    	$recipient = User::find($id);
 
     	$message = new Message();
     	$message->sender_id = $sender->id;
@@ -49,7 +48,7 @@ class UserController extends Controller
     	$message->content = $request->message;
     	$message->save();
 
-		$channel = "private-user-".$recipient->id;
+		$channel = "private-user-".$id;
 		$data = ['content' => $message->content, 'sender_id' => $message->sender_id, 'created_at' => $message->created_at->diffForHumans(), 'sender' => $sender->name];
         $this->pusher->trigger($channel, 'message', $data);
 
@@ -68,7 +67,7 @@ class UserController extends Controller
             'sender_id' => $id,
             ])
         ->orderBy('created_at', 'desc')
-        ->get();
+        ->get()->reverse();
 
         return view('layouts.messages', ['messages' => $messages]);
     }
